@@ -1,0 +1,37 @@
+@import "variebles";
+
+@for $i from 28 through 31 {
+  .calendar-#{$i} > :nth-child(-n+#{$i}) {
+    width: $calendar-size;
+    height: $calendar-size;
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin: 1px 0 0 1px;
+    cursor: pointer;
+    background: #eee;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    line-height: $calendar-size;
+    text-align: center;
+  }
+}
+
+@for $b from 1 through 29 {
+  .calendar > :nth-child(#{$b})::after {
+    content: "#{$b}";
+  }
+}
+
+$day-left: "mon" 0,
+  "tue" 102px,
+  "wed" 203px,
+  "thu" 304px,
+  "fri" 405px,
+  "sat" 506px,
+  "sun" 607px;
+
+@each $day, $left in $day-left {
+  .calendar-#{$day} > :first-child {
+    margin-left: $left;
+  }
+}
